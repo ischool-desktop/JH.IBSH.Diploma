@@ -1,0 +1,9 @@
+C:\Users\ChiaHu\Desktop\huangwc_desktop\dev.sh_d\實中畢業證書\obj\Debug\實中畢業證書.csprojResolveAssemblyReference.cache
+C:\Users\ChiaHu\Desktop\huangwc_desktop\dev.sh_d\實中畢業證書\obj\Debug\JH.IBSH.Diploma.AddNew.resources
+C:\Users\ChiaHu\Desktop\huangwc_desktop\dev.sh_d\實中畢業證書\obj\Debug\JH.IBSH.Diploma.MainForm.resources
+C:\Users\ChiaHu\Desktop\huangwc_desktop\dev.sh_d\實中畢業證書\obj\Debug\JH.IBSH.Diploma.Properties.Resources.resources
+C:\Users\ChiaHu\Desktop\huangwc_desktop\dev.sh_d\實中畢業證書\obj\Debug\實中畢業證書.csproj.GenerateResource.Cache
+C:\Users\ChiaHu\Desktop\huangwc_desktop\dev.sh_d\實中畢業證書\bin\Debug\JH.IBSH.Diploma.dll
+C:\Users\ChiaHu\Desktop\huangwc_desktop\dev.sh_d\實中畢業證書\bin\Debug\JH.IBSH.Diploma.pdb
+C:\Users\ChiaHu\Desktop\huangwc_desktop\dev.sh_d\實中畢業證書\obj\Debug\JH.IBSH.Diploma.dll
+C:\Users\ChiaHu\Desktop\huangwc_desktop\dev.sh_d\實中畢業證書\obj\Debug\JH.IBSH.Diploma.pdb
