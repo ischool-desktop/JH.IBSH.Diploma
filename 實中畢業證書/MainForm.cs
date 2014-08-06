@@ -29,20 +29,6 @@ namespace JH.IBSH.Diploma
         {
             InitializeComponent();
 
-            if (conf.GetBoolean("firstTime", true))//第一次使用時加入
-            {
-                //addCustConfig("高中畢業證明書");
-                //ReportConfiguration custConf;
-                //custConf = new Campus.Report.ReportConfiguration(configNameRule("高中畢業證明書"));
-                //custConf.Template = new Campus.Report.ReportTemplate(Properties.Resources.高中畢業證明書, Campus.Report.TemplateType.Word);
-                //custConf.Save();
-                ////addCustConfig("高中畢業證明書補發");
-                //custConf = new Campus.Report.ReportConfiguration(configNameRule("高中畢業證明書補發"));
-                //custConf.Template = new Campus.Report.ReportTemplate(Properties.Resources.高中畢業證明書補發, Campus.Report.TemplateType.Word);
-                //custConf.Save();
-                //conf.SetBoolean("firstTime", false);
-                //conf.Save();
-            }
             #region 設定comboBox選單
             foreach (string item in getCustConfig())
             {
@@ -96,7 +82,6 @@ namespace JH.IBSH.Diploma
                  ? custConfigs[current].Template.ToDocument()
                  : new Campus.Report.ReportTemplate(Properties.Resources.樣板, Campus.Report.TemplateType.Word).ToDocument();
             List<string> student_ids = K12.Presentation.NLDPanels.Student.SelectedSource;
-            //List<StudentRecord> srl = Student.SelectByIDs(student_ids);
 
             List<JHStudentRecord> jhsrl = JHStudent.SelectByIDs(student_ids);
             List<JHUpdateRecordRecord> jhurrl = JHUpdateRecord.SelectByStudentIDs(student_ids);
@@ -118,16 +103,7 @@ namespace JH.IBSH.Diploma
             //入學照片
             Dictionary<string, string> dic_photo_p = K12.Data.Photo.SelectFreshmanPhoto(K12.Presentation.NLDPanels.Student.SelectedSource);
             Dictionary<string, string> dic_photo_g = K12.Data.Photo.SelectGraduatePhoto(K12.Presentation.NLDPanels.Student.SelectedSource);
-            //科別中英文對照表
-            //Dictionary<string, string> dic_dept_ch_en = new Dictionary<string, string>();
-            //XmlElement Data = SmartSchool.Customization.Data.SystemInformation.Configuration["科別中英文對照表"];
-            //foreach (XmlElement var in Data)
-            //{
-            //    if (!dic_dept_ch_en.ContainsKey(var.GetAttribute("Chinese")))
-            //    {
-            //        dic_dept_ch_en.Add(var.GetAttribute("Chinese"), var.GetAttribute("English"));
-            //    }
-            //}
+
             Dictionary<string, object> mailmerge = new Dictionary<string, object>();
             string 校內字號 = textBoxX1.Text;
             string 校內字號英文 = textBoxX2.Text;
@@ -141,14 +117,13 @@ namespace JH.IBSH.Diploma
                 mailmerge.Add("學生英文姓名", jhsr.EnglishName);
                 mailmerge.Add("學生身分證號", jhsr.IDNumber);
                 mailmerge.Add("學生目前班級", jhsr.Class.Name);
-                //mailmerge.Add("學生目前科別", jhs);
                 mailmerge.Add("學生目前年級", jhsr.Class.GradeYear);
                 mailmerge.Add("學生目前座號", jhsr.StudentNumber);
                 if (jhsr.Birthday.HasValue)
                 {
                     mailmerge.Add("學生生日民國年", jhsr.Birthday.Value.Year - 1911);
                     mailmerge.Add("學生生日英文年", jhsr.Birthday.Value.Year);
-                    mailmerge.Add("學生生日中文年", toZhNumber("" + (jhsr.Birthday.Value.Year-1911)));
+                    mailmerge.Add("學生生日中文年", toZhNumber("" + (jhsr.Birthday.Value.Year - 1911)));
                     mailmerge.Add("學生生日月", jhsr.Birthday.Value.Month);
                     mailmerge.Add("學生生日中文月", toZhNumber("" + jhsr.Birthday.Value.Month));
                     mailmerge.Add("學生生日英文月", jhsr.Birthday.Value.ToString("MMMM", new System.Globalization.CultureInfo("en-US")));
@@ -158,7 +133,20 @@ namespace JH.IBSH.Diploma
                     mailmerge.Add("學生生日中文日", toZhNumber("" + jhsr.Birthday.Value.Day));
                     mailmerge.Add("學生生日日序數", dayToOrdinal(jhsr.Birthday.Value.Day));
                 }
-                
+                else
+                {
+                    mailmerge.Add("學生生日民國年", "");
+                    mailmerge.Add("學生生日英文年", "");
+                    mailmerge.Add("學生生日中文年", "");
+                    mailmerge.Add("學生生日月", "");
+                    mailmerge.Add("學生生日中文月", "");
+                    mailmerge.Add("學生生日英文月", "");
+                    mailmerge.Add("學生生日英文月3", "");
+                    mailmerge.Add("學生生日上標", "");
+                    mailmerge.Add("學生生日日", "");
+                    mailmerge.Add("學生生日中文日", "");
+                    mailmerge.Add("學生生日日序數", "");
+                }
 
                 if (dic_photo_p.ContainsKey(jhsr.ID))
                 {
@@ -176,9 +164,6 @@ namespace JH.IBSH.Diploma
                 {
                     mailmerge["離校學年度"] = djhurr[jhsr.ID].SchoolYear;
                     mailmerge["畢業證書字號"] = djhurr[jhsr.ID].GraduateCertificateNumber;
-                    //mailmerge["離校科別中文"] = djhurr[csr.ID].Department;
-                    //string tmp_dept = djhurr[csr.ID].Department;
-                    //mailmerge["離校科別英文"] = (tmp_dept != null && dic_dept_ch_en.ContainsKey(dic_st_urr[csr.ID].Department)) ? dic_dept_ch_en[dic_st_urr[csr.ID].Department] : "";
                 }
                 #endregion
                 mailmerge.Add("民國年", DateTime.Today.Year - 1911);
@@ -209,7 +194,7 @@ namespace JH.IBSH.Diploma
                 mailmerge.Add("校內字號英文", 校內字號英文);
                 #endregion
                 Document each = (Document)template.Clone(true);
-                //each.MailMerge.MergeField += new Aspose.Words.Reporting.MergeFieldEventHandler(merge);
+                each.MailMerge.MergeField += new Aspose.Words.Reporting.MergeFieldEventHandler(merge);
                 each.MailMerge.Execute(mailmerge.Keys.ToArray(), mailmerge.Values.ToArray());
 
                 document.Sections.Add(document.ImportNode(each.FirstSection, true));

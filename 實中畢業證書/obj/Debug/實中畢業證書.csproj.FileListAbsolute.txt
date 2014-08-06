@@ -7,3 +7,12 @@ C:\Users\ChiaHu\Desktop\huangwc_desktop\dev.sh_d\實中畢業證書\bin\Debug\JH
 C:\Users\ChiaHu\Desktop\huangwc_desktop\dev.sh_d\實中畢業證書\bin\Debug\JH.IBSH.Diploma.pdb
 C:\Users\ChiaHu\Desktop\huangwc_desktop\dev.sh_d\實中畢業證書\obj\Debug\JH.IBSH.Diploma.dll
 C:\Users\ChiaHu\Desktop\huangwc_desktop\dev.sh_d\實中畢業證書\obj\Debug\JH.IBSH.Diploma.pdb
+C:\Users\aaron\Desktop\huangwc_desktop\dev.sh_d\實中畢業證書\bin\Debug\JH.IBSH.Diploma.dll
+C:\Users\aaron\Desktop\huangwc_desktop\dev.sh_d\實中畢業證書\bin\Debug\JH.IBSH.Diploma.pdb
+C:\Users\aaron\Desktop\huangwc_desktop\dev.sh_d\實中畢業證書\bin\Debug\DevComponents.DotNetBar2.dll
+C:\Users\aaron\Desktop\huangwc_desktop\dev.sh_d\實中畢業證書\obj\Debug\JH.IBSH.Diploma.AddNew.resources
+C:\Users\aaron\Desktop\huangwc_desktop\dev.sh_d\實中畢業證書\obj\Debug\JH.IBSH.Diploma.MainForm.resources
+C:\Users\aaron\Desktop\huangwc_desktop\dev.sh_d\實中畢業證書\obj\Debug\JH.IBSH.Diploma.Properties.Resources.resources
+C:\Users\aaron\Desktop\huangwc_desktop\dev.sh_d\實中畢業證書\obj\Debug\實中畢業證書.csproj.GenerateResource.Cache
+C:\Users\aaron\Desktop\huangwc_desktop\dev.sh_d\實中畢業證書\obj\Debug\JH.IBSH.Diploma.dll
+C:\Users\aaron\Desktop\huangwc_desktop\dev.sh_d\實中畢業證書\obj\Debug\JH.IBSH.Diploma.pdb
