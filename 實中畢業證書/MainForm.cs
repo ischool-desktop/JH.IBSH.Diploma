@@ -28,7 +28,6 @@ namespace JH.IBSH.Diploma
         public MainForm()
         {
             InitializeComponent();
-
             #region 設定comboBox選單
             foreach (string item in getCustConfig())
             {
@@ -113,6 +112,8 @@ namespace JH.IBSH.Diploma
                 #region MailMerge
 
                 #region 學生資料
+                mailmerge.Add("學生系統編號", jhsr.ID);
+                mailmerge.Add("學號", jhsr.StudentNumber);
                 mailmerge.Add("學生姓名", jhsr.Name);
                 mailmerge.Add("學生英文姓名", jhsr.EnglishName);
                 mailmerge.Add("學生身分證號", jhsr.IDNumber);
